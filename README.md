@@ -1,13 +1,13 @@
 # bugz-utilities
-Utilities for Bugz Arena game, that may be helpful to create new bots.
+Утилиты для Wrike Bugz Arena, которые могут быть полезны при создании новых ботов и тестировании существующих.
 
 ### bin/match.dart
 
-Performs match between two bots (64-byte genome arrays) and displays the winner.
+Играет матч между двумя ботами (геномами - 64-байтными массивами чисел) и отображает победителя.
 
 ### bin/genome_generator.dart
 
-Generates new genomes using genetic algorithm - starts with random genomes, then runs the simulation, picks the best bots, performs some mutations and repeats the cycle.
+Генерирует новые геномы с помощью генетического алгоритма: изначально создаются случайные геномы, после чего запускается симуляция, по окончании которой выбираются лучшие, в некоторых из них происходят случайные мутации (замена одного байта на случайный) и цикл повторяется. Выводит на экран лучший на данный момент найденный геном, а так же количество ходов, которое ему удалось продержаться на поле (очевидно, чем их больше, тем бот более живуч).
 
 -----
-Also could be useful to take a look to this repo: https://github.com/izolenta/bugz-common.git, it is used here and contains services and routines for handling of bot matches.
+Также полезно будет посмотреть на репозиторий https://github.com/izolenta/bugz-common.git, который содержит сервисы для обработки матчей, использующиеся в игре, и процедуры из которого вызываются здесь. 
