@@ -6,7 +6,10 @@ import 'match.dart';
 
 final rand = Random();
 
-/// Generating genomes using genetic algorithm (random start + mutations)
+/// Generating genomes using a sort of genetic algorithm
+/// Starts with random genomes, then runs the simulation, performs mutations on some bots and finds the most stable ones
+/// which can win 10+ tours in a row. Repeats 1000 times. Finally, performs round-robin matches inside all found bots and picks
+/// best three of them
 Future main(List<String> arguments) async {
   final _service = BugzService();
   final genomes = <List<int>>[];
