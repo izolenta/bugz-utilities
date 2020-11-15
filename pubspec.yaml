@@ -7,6 +7,5 @@ environment:
 
 dependencies:
   bugz_common:
-    path: '../bugz-common'
-#    git:
-#      url: https://github.com/izolenta/bugz-common.git
+    git:
+      url: https://github.com/izolenta/bugz-common.git
