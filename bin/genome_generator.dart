@@ -7,14 +7,14 @@ Future main(List<String> arguments) async {
   var score = 0;
   var isWorking = true;
   while(isWorking) {
-    _service.processGeneticSimulation();
+    _service.processGeneticSimulation(false);
     final result = _service.processStats();
     if (result.third > score) {
       score = result.third;
       print('generation ${result.first}, new max ${score}');
       print(result.second.first.toJson());
     }
-    if (score > 100000) {
+    if (score > 1000000) {
       isWorking = false;
       print(result.second.first.toJson());
     }
