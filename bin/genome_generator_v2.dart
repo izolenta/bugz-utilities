@@ -63,7 +63,7 @@ Future main(List<String> arguments) async {
       }
       final winString = newGenome.join(',');
       if (winString != winGenome) {
-        if (stableSteps > 10) {
+        if (stableSteps > 15) {
           print('Stable bot: won last $stableSteps matches, generation $generationNumber');
           print(winGenome);
           stables.add(StableGenome(newGenome));
@@ -96,21 +96,24 @@ Future main(List<String> arguments) async {
       if (i==j) {
         continue;
       }
-      final result = processMatch(stables[i].genome, stables[j].genome, stables[i].rating, stables[j].rating);
+      var result = processMatch(stables[i].genome, stables[j].genome, stables[i].rating, stables[j].rating);
       stables[i].rating = result.teamToRating[bot1_id];
       stables[j].rating = result.teamToRating[bot2_id];
+      result = processMatch(stables[j].genome, stables[i].genome, stables[j].rating, stables[i].rating);
+      stables[j].rating = result.teamToRating[bot1_id];
+      stables[i].rating = result.teamToRating[bot2_id];
     }
   }
   stables.sort((a, b) => b.rating.compareTo(a.rating));
   print('\nBest bots found:');
-  for (var i=0; i<min(3, stables.length); i++) {
-    print(stables[i].genome.join(','));
+  for (var i=0; i<min(10, stables.length); i++) {
+    print('${stables[i].genome.join(',')}, [${stables[i].rating}]');
   }
 }
 
 List<int> _mutate(List<int> source) {
   final result = source.toList();
-  final mutations = rand.nextInt(2);
+  final mutations = rand.nextInt(2) + 1;
   for (var i=0; i<mutations; i++) {
     result[rand.nextInt(64)] = rand.nextInt(64);
   }
